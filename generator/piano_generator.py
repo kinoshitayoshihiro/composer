@@ -18,7 +18,6 @@ from music21 import (
     interval,
     volume as m21volume,
     pitch,
-    pedal,  # 🟨ここを修正🟨: pedal をインポート
 )
 
 from .base_part_generator import BasePartGenerator
@@ -260,7 +259,7 @@ class PianoGenerator(BasePartGenerator):
             return
         t = 0.0
         while t < end_offset:
-            ped = pedal.Pedal()
+            ped = expressions.PedalMark()
             part.insert(t, ped)
             t += sustain_beats
 

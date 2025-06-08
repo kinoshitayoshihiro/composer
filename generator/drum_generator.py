@@ -234,6 +234,8 @@ class DrumGenerator(BasePartGenerator):
             main_cfg=main_cfg,
             groove_profile=groove_profile,
         )
+        # Guarantee main_cfg attribute for compatibility
+        self.main_cfg = main_cfg or {}
         # もし、この後に独自の初期化処理があれば、ここに残してください。
         # 例：
         # if self.part_name == "bass":
@@ -378,6 +380,9 @@ class DrumGenerator(BasePartGenerator):
         # drum_patterns.yml をロード
         with open("data/drum_patterns.yml", encoding="utf-8") as f:
             drum_patterns = yaml.safe_load(f)
+
+        # Ensure essential drum patterns exist
+        self._add_internal_default_patterns()
 
     def _choose_pattern_key(self, emotion: str | None, intensity: str | None) -> str:
         emo = (emotion or "default").lower()
@@ -1019,13 +1024,6 @@ class DrumGenerator(BasePartGenerator):
         }
         return self._render_part(dummy_section)
 
-    def __init__(self, *args, **kwargs):
-        """全てのジェネレーターで統一された初期化メソッド"""
-        super().__init__(*args, **kwargs)
-        self.rng = random.Random()
-        if self.main_cfg.get("rng_seed") is not None:
-            self.rng.seed(self.main_cfg["rng_seed"])
-        self._add_internal_default_patterns()
 
     def _add_internal_default_patterns(self):
         """ライブラリに必須パターンがなければ、最低限のフォールバックを追加"""
