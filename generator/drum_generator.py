@@ -251,8 +251,15 @@ class DrumGenerator(BasePartGenerator):
         # if self.part_name == "bass":
         #     self._add_internal_default_patterns()
 
-        self.vocal_midi_path = self.main_cfg.get("vocal_midi_path_for_drums")
-        heatmap_json_path = self.main_cfg.get("heatmap_json_path_for_drums")
+        # Use path settings from main_cfg, falling back to general paths
+        self.vocal_midi_path = (
+            self.main_cfg.get("vocal_midi_path_for_drums")
+            or self.main_cfg.get("paths", {}).get("vocal_note_data_path")
+        )
+        heatmap_json_path = (
+            self.main_cfg.get("heatmap_json_path_for_drums")
+            or self.main_cfg.get("paths", {}).get("vocal_heatmap_path")
+        )
         self.heatmap = load_heatmap_data(heatmap_json_path)
         self.rng = random.Random()
         if self.main_cfg.get("rng_seed") is not None:
