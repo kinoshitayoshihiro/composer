@@ -260,6 +260,8 @@ class DrumGenerator(BasePartGenerator):
             self.main_cfg.get("heatmap_json_path_for_drums")
             or self.main_cfg.get("paths", {}).get("vocal_heatmap_path")
         )
+        if heatmap_json_path:
+            heatmap_json_path = str(Path(heatmap_json_path).expanduser().resolve())
         self.heatmap = load_heatmap_data(heatmap_json_path)
         self.rng = random.Random()
         if self.main_cfg.get("rng_seed") is not None:

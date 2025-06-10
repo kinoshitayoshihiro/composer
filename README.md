@@ -9,7 +9,7 @@ Install the required Python packages:
 ```bash
 pip install -r requirements.txt
 ```
-These requirements include packages such as `pydantic` and `music21`. Ensure they are installed so that all generators work correctly.
+These requirements include packages such as `pydantic`, `music21`, and `PyYAML`. Ensure they are installed so that all generators work correctly.
 
 Run the helper script to verify configuration:
 
