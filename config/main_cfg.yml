@@ -25,8 +25,8 @@ global_settings:
 
 # ------------------- 2. Paths -----------------------
 paths:
-  chordmap_path: "../data/processed_chordmap_with_emotion.yaml"
-  rhythm_library_path: "../data/rhythm_library.yml"
+  chordmap: "../data/processed_chordmap_with_emotion.yaml"
+  rhythm_library: "../data/rhythm_library.yml"
   arrangement_overrides_path: "../data/arrangement_overrides.json"
   vocal_heatmap_path: "../data/heatmap.json"
   vocal_note_data_path: "../data/vocal_note_data_ore.json"
