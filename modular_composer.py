@@ -143,7 +143,7 @@ def main_cli() -> None:
         for part_name, gen in part_gens.items():
             part_cfg = main_cfg["part_defaults"].get(part_name, {})
             sec_data = deepcopy(base_sec_data)
-            sec_data["part_params"] = part_cfg
+            sec_data["part_params"] = {part_name: part_cfg}
 
             part_sec_stream = gen.compose(section_data=sec_data)
             for elem in part_sec_stream.flatten().notesAndRests:
