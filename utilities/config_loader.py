@@ -23,7 +23,7 @@ logger = logging.getLogger("otokotoba.config_loader")
 # -- デフォルト必須キー一覧（存在しない場合は補完 or エラー） --
 REQUIRED_TOP_LEVEL = {"global_settings", "paths", "part_defaults"}
 REQUIRED_GLOBAL_SETTINGS = {"time_signature", "tempo_bpm", "key_tonic", "key_mode"}
-REQUIRED_PATHS = {"chordmap_path", "rhythm_library_path", "output_dir"}
+REQUIRED_PATHS = {"chordmap", "rhythm_library", "output_dir"}
 
 
 # --- 許容される役割リスト（ドキュメント・自動補完・静的チェック用） ---

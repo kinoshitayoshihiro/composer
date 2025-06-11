@@ -60,16 +60,43 @@ def normalise_chords_to_relative(chords: list[Dict[str, Any]]) -> list[Dict[str,
 # -------------------------------------------------------------------------
 
 
-def main_cli() -> None:
+def build_arg_parser(main_cfg: Dict[str, Any], *, default_main_cfg: Path) -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="OtoKotoba Modular Composer")
-    parser.add_argument("--main-cfg", required=True, type=Path)
+    parser.add_argument("--main-cfg", type=Path, default=default_main_cfg)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--chordmap",
+        type=Path,
+        default=Path(main_cfg["paths"]["chordmap"]),
+        help="Override chordmap YAML path",
+    )
+    parser.add_argument(
+        "--rhythm",
+        type=Path,
+        default=Path(main_cfg["paths"]["rhythm_library"]),
+        help="Override rhythm library path",
+    )
+    return parser
+
+
+def main_cli() -> None:
+    pre_parser = argparse.ArgumentParser(add_help=False)
+    pre_parser.add_argument("--main-cfg", required=True, type=Path)
+    pre_args, _ = pre_parser.parse_known_args()
+
+    main_cfg = load_main_cfg(pre_args.main_cfg)
+    parser = build_arg_parser(main_cfg, default_main_cfg=pre_args.main_cfg)
     args = parser.parse_args()
 
     # 1) 設定 & データロード -------------------------------------------------
-    main_cfg = load_main_cfg(args.main_cfg)
-    chordmap = load_chordmap_yaml(Path(main_cfg["paths"]["chordmap_path"]))
-    rhythm_lib = load_rhythm_library(main_cfg["paths"].get("rhythm_library_path"))
+    if args.chordmap:
+        main_cfg["paths"]["chordmap"] = str(args.chordmap)
+    if args.rhythm:
+        main_cfg["paths"]["rhythm_library"] = str(args.rhythm)
+    logging.info("Chordmap file: %s", main_cfg["paths"]["chordmap"])
+    logging.info("Rhythm library file: %s", main_cfg["paths"]["rhythm_library"])
+    chordmap = load_chordmap_yaml(Path(main_cfg["paths"]["chordmap"]))
+    rhythm_lib = load_rhythm_library(main_cfg["paths"].get("rhythm_library"))
 
     section_names: list[str] = main_cfg["sections_to_generate"]
     raw_sections: dict[str, Dict[str, Any]] = chordmap["sections"]
