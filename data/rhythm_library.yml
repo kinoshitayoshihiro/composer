@@ -1023,11 +1023,11 @@ drum_patterns:
       - {beat: 1.0, duration: 0.1, instrument: snare}
       - {beat: 2.0, duration: 0.1, instrument: kick}
       - {beat: 3.0, duration: 0.1, instrument: snare}
-      - {beat: 0.0, duration: 0.5, instrument: hat_closed, velocity_factor: 0.7}
-      - {beat: 0.5, duration: 0.5, instrument: hat_closed, velocity_factor: 0.65}
-      - {beat: 1.0, duration: 0.5, instrument: hat_closed, velocity_factor: 0.7}
-      - {beat: 1.5, duration: 0.5, instrument: hat_closed, velocity_factor: 0.65}
-      - {beat: 2.0, duration: 0.5, instrument: hat_closed, velocity_factor: 0.7}
-      - {beat: 2.5, duration: 0.5, instrument: hat_closed, velocity_factor: 0.65}
-      - {beat: 3.0, duration: 0.5, instrument: hat_closed, velocity_factor: 0.7}
-      - {beat: 3.5, duration: 0.5, instrument: hat_closed, velocity_factor: 0.65}
+      - {beat: 0.0, duration: 0.5, instrument: closed_hi_hat, velocity_factor: 0.7}
+      - {beat: 0.5, duration: 0.5, instrument: closed_hi_hat, velocity_factor: 0.65}
+      - {beat: 1.0, duration: 0.5, instrument: closed_hi_hat, velocity_factor: 0.7}
+      - {beat: 1.5, duration: 0.5, instrument: closed_hi_hat, velocity_factor: 0.65}
+      - {beat: 2.0, duration: 0.5, instrument: closed_hi_hat, velocity_factor: 0.7}
+      - {beat: 2.5, duration: 0.5, instrument: closed_hi_hat, velocity_factor: 0.65}
+      - {beat: 3.0, duration: 0.5, instrument: closed_hi_hat, velocity_factor: 0.7}
+      - {beat: 3.5, duration: 0.5, instrument: closed_hi_hat, velocity_factor: 0.65}

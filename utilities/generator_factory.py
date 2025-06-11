@@ -42,6 +42,14 @@ class GenFactory:
             else:
                 inst_obj = inst_spec
 
+            if part_name == "drums":
+                try:
+                    inst_obj = m21instrument.SnareDrum()
+                except Exception:
+                    inst_obj = m21instrument.Percussion()
+                if hasattr(inst_obj, "midiChannel"):
+                    inst_obj.midiChannel = 9
+
             lib_params = {}
             if rhythm_lib is not None:
                 if part_name == "drums":

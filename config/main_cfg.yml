@@ -62,7 +62,7 @@ part_defaults:
     articulation: "finger"
 
   drums:
-    style_key: "ballad_soft_kick_snare_8th_hat"
+    rhythm_key: "ballad_soft_kick_snare_8th_hat"
     ghost_hat_on_offbeat: true
     additional_kick_density: 0.2
     humanize_profile: ""
