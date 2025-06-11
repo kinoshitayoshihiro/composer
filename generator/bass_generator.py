@@ -154,7 +154,6 @@ class BassGenerator(BasePartGenerator):
         global_time_signature=None,
         global_key_signature_tonic=None,
         global_key_signature_mode=None,
-        mirror_melody: bool = False,
         main_cfg=None,
         **kwargs,
     ):
@@ -168,7 +167,6 @@ class BassGenerator(BasePartGenerator):
             **kwargs,
         )
         self.cfg: dict = kwargs.copy()
-        self.mirror_melody = mirror_melody
         self.logger = logging.getLogger("modular_composer.bass_generator")
         self.part_parameters = kwargs.get("part_parameters", {})
         self.main_cfg = main_cfg

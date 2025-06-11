@@ -23,3 +23,9 @@ Use `modular_composer.py` to generate MIDI after installing dependencies. Run th
 ```bash
 python3 modular_composer.py --main-cfg config/main_cfg.yml
 ```
+
+### Configuration Notes
+
+Instrument defaults are defined in `config/main_cfg.yml` under `part_defaults`.
+For bass parts the configurable options include `rhythm_key`, `velocity`, and
+`weak_beat_style`. The unused `mirror_melody` option has been removed.
